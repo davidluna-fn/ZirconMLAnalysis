@@ -18,7 +18,7 @@ class ZirconsDataProcessor:
         self.categorical = ['cut', 'color', 'clarity']
         self.numerical = ['depth', 'table', 'x', 'y', 'z']
         self.test = test
-        if ~self.test:
+        if self.test == False:
             self.price = data.price
 
     def new_features(self):
@@ -50,6 +50,7 @@ class ZirconsDataProcessor:
         self.data[self.numerical] = self.scaler.fit_transform(
             self.data[self.numerical])
         
-        if self.test:
+        if self.test == True:
             return self.data
-        else: self.data, self.price
+        else: 
+            return self.data, self.price

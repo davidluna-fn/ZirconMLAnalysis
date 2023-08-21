@@ -5,7 +5,13 @@ from sklearn.model_selection import GridSearchCV
 
 
 class Train:
-    def train_model(self, X_train, y_train, model_name):
+
+    def __init__(self, X_train, y_train, model_name) -> None:
+        self.X_train = X_train
+        self.y_train = y_train
+        self.model_name = model_name
+
+    def train_model(self):
         """
         Train a model using XGBoost regressor and hyperparameter tuning.
 
@@ -31,18 +37,18 @@ class Train:
         grid_search = GridSearchCV(estimator=xgb, param_grid=param_grid,
                                    cv=3, verbose=1, n_jobs=-1,  scoring='neg_root_mean_squared_error')
 
-        grid_search.fit(X_train, y_train)
+        grid_search.fit(self.X_train, self.y_train)
 
         # Get the best trained model from GridSearchCV
         best_model = grid_search.best_estimator_
 
         # Save the best model to a file using joblib
-        model_path = f'../models/{model_name}.pkl'
+        model_path = f'../models/{self.model_name}.pkl'
         joblib.dump(best_model, model_path)
 
         # Get feature importances
         feature_importances = best_model.feature_importances_
-        feature_names = X_train.columns
+        feature_names = self.X_train.columns
 
         # Sort features by importance
         feature_importance_df = pd.DataFrame(
