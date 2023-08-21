@@ -33,7 +33,7 @@ The project is structured as follows:
 
 ## Getting Started
 
-1. Clone this repository: `git clone https://github.com/yourusername/ZirconMLAnalysis.git`
+1. Clone this repository: `git clone https://github.com/davidluna-fn/ZirconMLAnalysis.git`
 2. Navigate to the repository: `cd ZirconMLAnalysis`
 3. Install the required packages: `pip install -r requirements.txt`
 4. To build and run the Docker image:
