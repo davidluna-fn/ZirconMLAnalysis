@@ -5,7 +5,7 @@ from sklearn.preprocessing import OrdinalEncoder, StandardScaler
 class ZirconsDataProcessor:
     """Class for processing zircon data including feature engineering and preprocessing."""
 
-    def __init__(self, data: pd.DataFrame) -> None:
+    def __init__(self, data: pd.DataFrame, test: bool = False) -> None:
         """
         Constructor for ZirconsDataProcessor.
 
@@ -17,7 +17,9 @@ class ZirconsDataProcessor:
         self.scaler = StandardScaler()
         self.categorical = ['cut', 'color', 'clarity']
         self.numerical = ['depth', 'table', 'x', 'y', 'z']
-        self.price = data.price
+        self.test = test
+        if ~self.test:
+            self.price = data.price
 
     def new_features(self):
         """Generate new features based on zircon dimensions and attributes."""
@@ -47,5 +49,7 @@ class ZirconsDataProcessor:
 
         self.data[self.numerical] = self.scaler.fit_transform(
             self.data[self.numerical])
-
-        return self.data, self.price
+        
+        if self.test:
+            return self.data
+        else: self.data, self.price
