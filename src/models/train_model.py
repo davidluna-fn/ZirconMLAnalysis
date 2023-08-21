@@ -1,6 +1,5 @@
 import joblib
 import pandas as pd
-from tqdm.notebook import tqdm
 from xgboost import XGBRegressor
 from sklearn.model_selection import GridSearchCV
 
