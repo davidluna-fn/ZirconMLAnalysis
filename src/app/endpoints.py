@@ -1,14 +1,11 @@
-import sys
-from fastapi import APIRouter, File, UploadFile
+import numpy as np
+import pandas as pd
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
-from typing import List
-import pandas as pd
-import joblib
+from fastapi import APIRouter, File, UploadFile
 
-sys.path.append('./src/')
-from models.predict_model import Predict
-from features.build_features import ZirconsDataProcessor
+from src.models.predict_model import Predict
+from src.features.build_features import ZirconsDataProcessor
 
 
 
@@ -32,7 +29,7 @@ async def predict_url(file: UploadFile = File(...)):
         processor = ZirconsDataProcessor(data, test =True)
         data = processor.data_processor()
         # Realizar predicciones
-        predictions = predictor.predict(data)
+        predictions = np.round(predictor.predict(data),3)
 
         # Formatear resultados como JSON
         predictions_json = jsonable_encoder(predictions.tolist())
