@@ -35,7 +35,7 @@ The project is structured as follows:
 
 1. Clone this repository: `git clone https://github.com/davidluna-fn/ZirconMLAnalysis.git`
 2. Navigate to the repository: `cd ZirconMLAnalysis`
-3. Install the required packages: `pip install -r requirements.txt`
+3. Install the required packages: `pip install -r requirements.txt` only necessary if you are going to run notebooks
 4. To build and run the Docker image:
    - Build the image: `docker build -t zircon-api .`
    - Run the container: `docker run -d -p 8000:8000 zircon-api`
