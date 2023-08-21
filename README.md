@@ -55,7 +55,6 @@ You can easily test the API and make price predictions for zircon gemstones by f
 
 2. In the Swagger UI interface provided by FastAPI, you will see a list of available endpoints. Select the "predict_url" endpoint.
 
-![](/reports/figures_test_api/f2.png)
 
 
 3. Click the "Try it out" button.
