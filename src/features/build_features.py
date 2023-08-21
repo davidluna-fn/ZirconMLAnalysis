@@ -30,9 +30,9 @@ class ZirconsDataProcessor:
             (self.data['density'] + 1e-6)
         self.data['depth_per_table'] = self.data['depth'] / \
             (self.data['table'] + 1e-6)
-        self.data['ratio_xy'] = self.data['x'] / self.data['y']
-        self.data['ratio_xz'] = self.data['x'] / self.data['z']
-        self.data['ratio_yz'] = self.data['y'] / self.data['z']
+        self.data['ratio_xy'] = self.data['x'] / (self.data['y'] + 1e-6)
+        self.data['ratio_xz'] = self.data['x'] / (self.data['z'] + 1e-6)
+        self.data['ratio_yz'] = self.data['y'] / (self.data['z'] + 1e-6)
 
     def data_processor(self) -> pd.DataFrame:
         """
